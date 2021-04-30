@@ -17,8 +17,19 @@ ls -al'''
     }
 
     stage('build') {
-      steps {
-        sh './gradlew clean build'
+      parallel {
+        stage('build') {
+          steps {
+            sh './gradlew clean build'
+          }
+        }
+
+        stage('deploy') {
+          steps {
+            sh './gradlew bootRun'
+          }
+        }
+
       }
     }
 
