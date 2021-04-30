@@ -3,14 +3,15 @@ pipeline {
   stages {
     stage('diagnostics') {
       steps {
-        sh '''pwd
+        sh '''whoami
+pwd
 ls -al'''
       }
     }
 
     stage('build') {
       steps {
-        sh 'gradle clean build'
+        sh './gradlew clean build'
       }
     }
 
