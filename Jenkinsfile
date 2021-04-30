@@ -9,6 +9,13 @@ ls -al'''
       }
     }
 
+    stage('setup') {
+      steps {
+        sh '''chmod +x gradlew
+'''
+      }
+    }
+
     stage('build') {
       steps {
         sh './gradlew clean build'
