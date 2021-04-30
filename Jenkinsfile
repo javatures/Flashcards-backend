@@ -22,5 +22,11 @@ ls -al'''
       }
     }
 
+    stage('deploy') {
+      steps {
+        sh './gradlew bootRun'
+      }
+    }
+
   }
 }
