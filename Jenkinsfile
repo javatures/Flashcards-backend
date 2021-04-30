@@ -8,5 +8,11 @@ ls -al'''
       }
     }
 
+    stage('build') {
+      steps {
+        sh 'gradle clean build'
+      }
+    }
+
   }
 }
