@@ -1,9 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('diagnostics') {
       steps {
-        sh 'pwd'
+        sh '''pwd
+ls -al'''
       }
     }
 
