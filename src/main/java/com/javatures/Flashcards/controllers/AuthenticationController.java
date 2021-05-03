@@ -1,4 +1,4 @@
-package com.javatures.Flashcards.Controllers;
+package com.javatures.Flashcards.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
