@@ -20,6 +20,11 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+	//testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+
 }
 
 test {

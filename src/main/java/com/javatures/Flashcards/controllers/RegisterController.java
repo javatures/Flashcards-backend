@@ -23,7 +23,7 @@ public class RegisterController {
 	private RegisterService registerService;
 	
 	@GetMapping("/users/{useremail}/users")
-	public List<User> getAllQuestionsAndAnswers(@PathVariable String useremail) {
+	public List<User> getAllFlashcards(@PathVariable String useremail) {
 		
 		return this.registerService.findAll();
 	}

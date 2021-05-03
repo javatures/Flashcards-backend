@@ -31,7 +31,7 @@ public class FlashcardsController {
 	
 	// get all flash cards by username(email address)
 	@GetMapping("/users/{username}/flashcards")
-	public List<Flashcard> getAllQuestionsAndAnswersByUser(@PathVariable String username) {
+	public List<Flashcard> getAllFlashcardsByUser(@PathVariable String username) {
 		System.out.println("QuestionsAndAnswerController.getAllQuestionsAndAnswersByUser user__login=" + username);
 		return this.flashcardsService.findAllByUser(username);
 	}
@@ -46,7 +46,7 @@ public class FlashcardsController {
 	
 	// delete a flash card
 	@DeleteMapping("/users/{username}/flashcards/{fId}")
-	public ResponseEntity<Void> deleteQa(@PathVariable String username, @PathVariable  int fId) {
+	public ResponseEntity<Void> deleteFlashcard(@PathVariable String username, @PathVariable  int fId) {
 		Flashcard flashcard = this.flashcardsService.deleteById(fId);
 		if(flashcard != null) {
 			return ResponseEntity.noContent().build();
