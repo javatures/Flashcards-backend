@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -29,22 +27,22 @@ public class FlashcardsController {
 	@Autowired
 	private FlashcardsService flashcardsService;
 	
-	// get all flash cards by username(email address)
+	// get all flashcards by username(email address)
 	@GetMapping("/users/{username}/flashcards")
 	public List<Flashcard> getAllFlashcardsByUser(@PathVariable String username) {
-		System.out.println("QuestionsAndAnswerController.getAllQuestionsAndAnswersByUser user__login=" + username);
+		System.out.println("FlashcardsController.getAllQuestionsAndAnswersByUser user__login=" + username);
 		return this.flashcardsService.findAllByUser(username);
 	}
 	
-	// get a flash card
+	// get a flashcard
 	@GetMapping("/users/{username}/flashcards/{id}")
 	public Flashcard getFlashcard(@PathVariable String username, @PathVariable int id) {
-		System.out.println("QuestionsAndAnswerController.getQa username=" + username);
+		System.out.println("FlashcardsController.getFlashcards username=" + username);
 		return this.flashcardsService.findById(id);
 	}
 	
 	
-	// delete a flash card
+	// delete a flashcard
 	@DeleteMapping("/users/{username}/flashcards/{fId}")
 	public ResponseEntity<Void> deleteFlashcard(@PathVariable String username, @PathVariable  int fId) {
 		Flashcard flashcard = this.flashcardsService.deleteById(fId);
@@ -75,7 +73,7 @@ public class FlashcardsController {
 				@PathVariable String username, 
 				@RequestBody Flashcard flashcard) {
 			
-			System.out.println("FlashcardsController.createFlashcard user__login=" + username);
+			System.out.println("FlashcardsController.createFlashcard user_login=" + username);
 			
 			Flashcard createdFlashcard = this.flashcardsService.insert(flashcard);
 			
@@ -88,9 +86,9 @@ public class FlashcardsController {
 	
 	
 	
-	@RequestMapping(path="/hello-world", method=RequestMethod.GET)
-	public String helloWorld() {
-		return "Hello World";
-	}
+	// @RequestMapping(path="/hello-world", method=RequestMethod.GET)
+	// public String helloWorld() {
+	// 	return "Hello World";
+	// }
 }
 

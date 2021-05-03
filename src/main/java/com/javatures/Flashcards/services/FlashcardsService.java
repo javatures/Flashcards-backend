@@ -23,14 +23,14 @@ public class FlashcardsService {
 	
 	// find all flash cards by user email
 	public List<Flashcard> findAllByUser(String username) {
-		System.out.println("QuestionsAndAnswersService.findAllByUser user_login=" + username);
+		System.out.println("FlashcardsService.findAllByUser user_login=" + username);
 		List<Flashcard> userF = new ArrayList<>();
 		for(Flashcard f : fList) {
 			if (f.getUser_email().equals(username)) {
 				userF.add(f);
 			}
 		}
-		System.out.println("QuestionsAndAnswersService.findAllByUser return " + userF);
+		System.out.println("FlashcardsService.findAllByUser return " + userF);
 		return userF;
 	}
 	
@@ -39,7 +39,7 @@ public class FlashcardsService {
 	public Flashcard update(int id, Flashcard flashcard) {
 		
 		
-		System.out.println("QuestionsAndAnswersService.update user_login=" + flashcard.getUser_email());
+		System.out.println("FlashcardsService.update user_login=" + flashcard.getUser_email());
 		
 		Flashcard temp = null;
 		
@@ -62,7 +62,7 @@ public class FlashcardsService {
 	// delete a flash card by flash card ID
 	public Flashcard deleteById(int fId) {
 		System.out.println("******************************");
-		System.out.println("QuestionsAndAnswersService.deleteById >>>" + fId);
+		System.out.println("FlashcardsService.deleteById >>>" + fId);
 		
 		Flashcard temp = null;
 		

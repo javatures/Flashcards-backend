@@ -11,13 +11,18 @@ import com.javatures.Flashcards.models.User;
 @Service
 public class RegisterService {
 	
-	private static List<User> usersList = new ArrayList<>();
+	private List<User> usersList = new ArrayList<>();
 	private static int idCounter = 0;
-	
-	static {
-		usersList.add(new User(++idCounter, "john", "ng", "john@gmail.com", "john@gmail.com", "password"));
-		usersList.add(new User(++idCounter, "mary", "public", "mary@gmail.com", "mary@gmail.com", "password"));
+
+	RegisterService() {
+		addUser(new User(++RegisterService.idCounter, "john", "ng", "john@gmail.com", "john@gmail.com", "password"));
+		addUser(new User(++RegisterService.idCounter, "mary", "public", "mary@gmail.com", "mary@gmail.com", "password"));
 	}
+	
+	// static {
+	// 	usersList.add(new User(++idCounter, "john", "ng", "john@gmail.com", "john@gmail.com", "password"));
+	// 	usersList.add(new User(++idCounter, "mary", "public", "mary@gmail.com", "mary@gmail.com", "password"));
+	// }
 	
 	// retrieve all users
 	public List<User> findAll() {
