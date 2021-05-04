@@ -16,7 +16,7 @@ import com.javatures.Flashcards.models.User;
 import com.javatures.Flashcards.services.RegisterService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://54.90.153.65:3000")
 public class RegisterController {
 	
 	@Autowired
