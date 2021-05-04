@@ -68,7 +68,7 @@ public class FlashcardsController {
 	}
 	
 		// create a flash card
-		@PostMapping("/users/{username}/flashcard")
+		@PostMapping("/users/{username}/flashcards")
 		public ResponseEntity<Void> createFlashcard(
 				@PathVariable String username, 
 				@RequestBody Flashcard flashcard) {
