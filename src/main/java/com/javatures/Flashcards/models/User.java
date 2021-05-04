@@ -1,9 +1,12 @@
 package com.javatures.Flashcards.models;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +18,9 @@ public class User {
     private String fname;
     private String lname;
     private String email;
-    private String username;
     private String password;
+    @OneToMany(mappedBy = "user")
+    private Set<Flashcard> flashcards;
 
     public Integer getId() {
         return id;
@@ -41,12 +45,6 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
     }
     public String getPassword() {
         return password;
