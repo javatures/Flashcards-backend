@@ -38,8 +38,8 @@ public class Flashcard {
 	}
 
 
-	public void setFid(int qid) {
-		Fid = qid;
+	public void setFid(int fid) {
+		Fid = fid;
 	}
 
 
