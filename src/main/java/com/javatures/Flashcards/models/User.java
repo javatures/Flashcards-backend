@@ -1,5 +1,6 @@
 package com.javatures.Flashcards.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class User {
     private Integer id;
     private String user_fn;
     private String user_ln;
+    @Column(unique = true)
     private String user_email;
     private String user_pwd;
 
