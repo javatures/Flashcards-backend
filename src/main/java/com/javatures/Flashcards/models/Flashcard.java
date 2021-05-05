@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,25 +11,23 @@ import javax.persistence.Table;
 public class Flashcard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    private Integer fid;
+    private String user_email;
     private String question;
     private String answer;
     private String category;
     
-    public Integer getId() {
-        return id;
+    public Integer getFid() {
+        return fid;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setFid(Integer fid) {
+        this.fid = fid;
     }
-    public User getUser() {
-        return user;
+    public String getUser_email() {
+        return user_email;
     }
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
     public String getQuestion() {
         return question;
@@ -55,14 +51,18 @@ public class Flashcard {
     public Flashcard(){
     }
 
-    public Flashcard(String question, String answer){
+    public Flashcard(Integer fid, String user_email, String question, String answer, String category) {
+        this.fid = fid;
+        this.user_email = user_email;
         this.question = question;
         this.answer = answer;
+        this.category = category;
     }
 
     @Override
     public String toString() {
-        return "Flashcard [answer=" + answer + ", id=" + id + ", question=" + question + ", userId=" + user + "]";
+        return "Flashcard [answer=" + answer + ", category=" + category + ", fid=" + fid + ", question=" + question
+                + ", user_email=" + user_email + "]";
     }
-
+    
 }

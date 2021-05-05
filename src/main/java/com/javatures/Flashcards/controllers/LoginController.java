@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("login")
+@RequestMapping("users/login/api/user")
 public class LoginController {
 
     @Autowired
@@ -20,8 +20,7 @@ public class LoginController {
 
     @PostMapping
     public User authenticateUser(@RequestBody User user){
-        System.out.println(user);
-        System.out.println(userRepo.checkEmail(user.getEmail(), user.getPassword()).toString());
-        return userRepo.checkEmail(user.getEmail(), user.getPassword());
+        System.out.println(userRepo.checkEmail(user.getUser_email(), user.getUser_pwd()).toString());
+        return userRepo.checkEmail(user.getUser_email(), user.getUser_pwd());
     }
 }

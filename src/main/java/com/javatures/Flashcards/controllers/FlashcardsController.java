@@ -3,6 +3,7 @@ package com.javatures.Flashcards.controllers;
 import com.javatures.Flashcards.repositories.FlashcardRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.javatures.Flashcards.models.Flashcard;
 
@@ -19,38 +20,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("flashcards")
+@RequestMapping("users")
 public class FlashcardsController {
     @Autowired
     private FlashcardRepo flashcardRepo;
 
-    @GetMapping
-    public List<Flashcard> getAll(){
-        System.out.println(flashcardRepo.findAll());
-        return flashcardRepo.findAll();
+    @GetMapping("/{user_email}/flashcards")
+    public List<Flashcard> getAllFromUser(@PathVariable String user_email){
+        List<Flashcard> result = flashcardRepo.findFlashcards(user_email);
+        System.out.println("getAllFromUser: " + result);
+        return result;
     }
 
-    // @GetMapping
-    // public Flashcard getFlashcard(@PathVariable int id){
-    //     return flashcardRepo.findById(id);
-    //     return null;
-    // }
-
-    @PostMapping("/create")
-    public Flashcard createFlashcard(@RequestBody Flashcard flashcard){
-        System.out.println(flashcard.toString());
-        return flashcardRepo.save(flashcard);
+    @GetMapping("/{user_email}/flashcards/{id}")
+    public Optional<Flashcard> getFlashcard(@PathVariable String user_email, @PathVariable int id){
+        Optional<Flashcard> result = flashcardRepo.findById(id);
+        System.out.println("getFlashcard: " + result);
+        if (!result.isPresent()) return null;
+        return result;
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void removeFlashcard(@PathVariable int id){
+    @PostMapping("/{user_email}/flashcards")
+    public Flashcard createFlashcard(@PathVariable String user_email, @RequestBody Flashcard flashcard){
+        Flashcard result = flashcardRepo.save(flashcard);
+        System.out.println("createFlashcard: " + result);
+        return result;
+    }
+
+    @DeleteMapping("/{username}/flashcards/{id}")
+    public void removeFlashcard(@PathVariable String username, @PathVariable int id){
+        System.out.println("removeFlashcard: "+ id);
         flashcardRepo.deleteById(id);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{username}/flashcards/{id}")
     public Flashcard editFlashcard(@PathVariable int id, @RequestBody Flashcard flashcard){
-        return null;
+        Flashcard update = flashcardRepo.getOne(id);
+        update.setQuestion(flashcard.getQuestion());
+        update.setAnswer(flashcard.getAnswer());
+        update.setCategory(flashcard.getCategory());
+        flashcardRepo.save(update);
+        return update;
     }
-
 
 }
