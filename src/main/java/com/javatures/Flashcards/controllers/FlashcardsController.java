@@ -55,12 +55,12 @@ public class FlashcardsController {
 
     @PutMapping("/{username}/flashcards/{id}")
     public Flashcard editFlashcard(@PathVariable int id, @RequestBody Flashcard flashcard){
+        System.out.println("id: " + id + " editFlashcard: " + flashcard);
         Flashcard update = flashcardRepo.getOne(id);
         update.setQuestion(flashcard.getQuestion());
         update.setAnswer(flashcard.getAnswer());
         update.setCategory(flashcard.getCategory());
-        flashcardRepo.save(update);
-        return update;
+        return flashcardRepo.save(update);
     }
 
 }
