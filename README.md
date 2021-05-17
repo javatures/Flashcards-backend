@@ -14,7 +14,7 @@ Flashcard study application for your studying needs
 ## Getting Started
 There is no need to run the backend unless you wish to host the backend locally. The backend is currently being hosted on AWS and the frontend is connected to it.
 1. To download the backend, use:
-`git clone https://github.com/javatures/Flashcards-frontend.git`
+`git clone https://github.com/javatures/Flashcards-backend.git`
 2. Then to run, simply use:
 `gradle bootrun`
 
