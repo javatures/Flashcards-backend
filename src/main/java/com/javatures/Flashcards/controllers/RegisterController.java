@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("users/register/api/user")
+@RequestMapping("api/users/register/api/user")
 public class RegisterController {
 
     @Autowired
